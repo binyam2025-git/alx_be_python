@@ -1,25 +1,27 @@
 print("--- Task Reminder setup ---")
 
-task_description = input("Enter your task:")
-priority_input = input("Priority (high/medium/low):").lower()
-is_time_bound = input("Is it time-bound? (yes/no):").lower() == 'yes'
+# Exact prompt match
+task = input("Enter your task:")
+priority = input("Priority (high/medium/low):").lower()
+time_bound = input("Is it time-bound? (yes/no):").lower()
 
-reminder_message = ""
-
-match priority_input:
+# Use of match case
+match priority:
     case "high":
-        reminder_message = f"Reminder: '{task_description}' is a high priority task"
+        reminder = f"Reminder: '{task}' is a high priority task"
     case "medium":
-        reminder_message = f"Reminder: '{task_description}' is a medium priority task"
+        reminder = f"Reminder: '{task}' is a medium priority task"
     case "low":
-        reminder_message = f"Reminder: '{task_description}' is a low priority task"
+        reminder = f"Reminder: '{task}' is a low priority task"
     case _:
-        reminder_message = f"Reminder: '{task_description}' has an unspecified priority"
+        reminder = f"Reminder: '{task}' has an unspecified priority"
 
-if is_time_bound:
-    reminder_message += " that requires immediate attention today!"
+# Use of if statement to modify reminder based on time sensitivity
+if time_bound == "yes":
+    reminder += " that requires immediate attention today!"
 else:
-    reminder_message += ". Consider completing it when you have free time."
+    reminder += ". Consider completing it when you have free time."
 
+# Provide customized reminder
 print("\n--- Your Customized Reminder ---")
-print(reminder_message)
+print(reminder)
