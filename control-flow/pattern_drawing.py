@@ -1,16 +1,15 @@
->>> rows = int(input("Enter the number of rows:"))
-Enter the number of rows:4
->>> columns = int(input("Enter the nymber of columns:"))
-Enter the nymber of columns:4
->>> symbol = input("Enter a symbol to use:")
-Enter a symbol to use:*
->>> for x in range (rows):
-...     for y in range(columns):
-...         print (symbol, end= "")
-...     print()
-...
-****
-****
-****
-****
->>>
+size = int(input("Enter the size of the pattern:"))
+
+row_count = 0
+
+print("\n --- Your pattern ---")
+
+while row_count < size:
+
+    for col_count in range(size):
+        print("*", end="")
+
+   print()
+   row_count +=1
+
+
