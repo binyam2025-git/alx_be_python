@@ -1,56 +1,55 @@
-FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
-CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
+CELSIUS_TO_FAHRENHEIT_FACTOR = 9/5
+FAHRENHEIT_OFFSET = 32
 
-def convert_to_celsius(fahrenheit):
-    """
-    Converts a temperature from Fahrenheit to Celsius.
-    Uses the global FAHRENHEIT_TO_CELSIUS_FACTOR.
-    Formula: C = (F - 32) * (5/9)
-    """
-    # Accessing the global FAHRENHEIT_TO_CELSIUS_FACTOR
-    celsius = (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
-    return celsius
-
-def convert_to_fahrenheit(celsius):
+def convert_celsius_to_fahrenheit(celsius_temp):
     """
     Converts a temperature from Celsius to Fahrenheit.
-    Uses the global CELSIUS_TO_FAHRENHEIT_FACTOR.
-    Formula: F = C * (9/5) + 32
     """
-    # Accessing the global CELSIUS_TO_FAHRENHEIT_FACTOR
-    fahrenheit = celsius * CELSIUS_TO_FAHRENHEIT_FACTOR + 32
-    return fahrenheit
+    return (celsius_temp * CELSIUS_TO_FAHRENHEIT_FACTOR) + FAHRENHEIT_OFFSET
+
+def convert_fahrenheit_to_celsius(fahrenheit_temp):
+    """
+    Converts a temperature from Fahrenheit to Celsius.
+    """
+    return (fahrenheit_temp - FAHRENHEIT_OFFSET) / CELSIUS_TO_FAHRENHEIT_FACTOR
 
 def main():
     """
-    Main function to interact with the user, get input, perform conversion,
-    and display the result. Handles input validation.
+    Main function for user interaction and temperature conversion.
     """
-    print("--- Temperature Conversion Tool ---")
+    while True:
+        print("\nTemperature Conversion Tool")
+        print("1. Convert Celsius to Fahrenheit")
+        print("2. Convert Fahrenheit to Celsius")
+        print("3. Exit")
 
-    # Prompt user for temperature
-    temperature_input = input("Enter the temperature to convert: ").strip()
-    
-    # Input validation for numeric value
-    try:
-        temperature = float(temperature_input) # Use float for temperatures
-    except ValueError:
-        # If the input is not a valid number, print the error message and exit
-        print("Invalid temperature. Please enter a numeric value.")
-        return # Exit the function, ending the script for this run
+        choice = input("Enter your choice (1, 2, or 3): ").strip()
 
-    # Prompt user for unit
-    unit = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().upper()
+        if choice == '1':
+            while True:
+                try:
+                    celsius_str = input("Enter temperature in Celsius: ").strip()
+                    celsius = float(celsius_str)
+                    fahrenheit = convert_celsius_to_fahrenheit(celsius)
+                    print(f"{celsius}°C is equal to {fahrenheit:.2f}°F")
+                    break
+                except ValueError:
+                    print("Invalid input. Please enter a numerical value for temperature.")
+        elif choice == '2':
+            while True:
+                try:
+                    fahrenheit_str = input("Enter temperature in Fahrenheit: ").strip()
+                    fahrenheit = float(fahrenheit_str)
+                    celsius = convert_fahrenheit_to_celsius(fahrenheit)
+                    print(f"{fahrenheit}°F is equal to {celsius:.2f}°C")
+                    break
+                except ValueError:
+                    print("Invalid input. Please enter a numerical value for temperature.")
+        elif choice == '3':
+            print("Exiting temperature conversion tool. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.")
 
-    if unit == 'C':
-        converted_temp = convert_to_fahrenheit(temperature)
-        print(f"{temperature}°C is {converted_temp}°F")
-    elif unit == 'F':
-        converted_temp = convert_to_celsius(temperature)
-        print(f"{temperature}°F is {converted_temp}°C")
-    else:
-        print("Invalid unit. Please enter 'C' for Celsius or 'F' for Fahrenheit.")
-
-# Ensures main() runs only when the script is executed directly
 if __name__ == "__main__":
     main()
