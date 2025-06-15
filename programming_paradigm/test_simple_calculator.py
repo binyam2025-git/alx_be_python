@@ -25,7 +25,7 @@ class TestSimpleCalculator(unittest.TestCase):
         """Test the subtract method with a basic case for checker compliance."""
         self.assertEqual(self.calc.subtract(10, 4), 6)
 
-    def test_multiply(self):
+    def test_multiplication(self):
         """Test the multiply method with a basic case for checker compliance."""
         self.assertEqual(self.calc.multiply(3, 6), 18)
 
