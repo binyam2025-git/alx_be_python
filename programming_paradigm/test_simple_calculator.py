@@ -29,7 +29,7 @@ class TestSimpleCalculator(unittest.TestCase):
         """Test the multiply method with a basic case for checker compliance."""
         self.assertEqual(self.calc.multiply(3, 6), 18)
 
-    def test_divide(self):
+    def test_division(self):
         """Test the divide method with basic cases, including division by zero, for checker compliance."""
         self.assertEqual(self.calc.divide(15, 3), 5.0)
         self.assertIsNone(self.calc.divide(8, 0)) # Test division by zero as well
