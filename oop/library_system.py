@@ -112,7 +112,7 @@ class Library:
         """
         if isinstance(book, Book): # Ensure that the object being added is a Book or a subclass of Book
             self.books.append(book)
-            print(f"Added '{book.title}' to the library.")
+            # print(f"Added '{book.title}' to the library.")
         else:
             print("Error: Only Book instances (or derived classes) can be added to the library.")
 
@@ -125,7 +125,7 @@ class Library:
             print("The library is currently empty.")
             return
 
-        print("\n--- Books in the Library ---")
+        # print("\n--- Books in the Library ---")
         for book in self.books:
             print(book) # This will automatically call the __str__ method of the respective book object
-        print("----------------------------")
+        # print("----------------------------")
