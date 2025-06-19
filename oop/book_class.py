@@ -22,7 +22,7 @@ class Book:
         self.title = title
         self.author = author
         self.year = year
-        print(f"Book '{self.title}' created.") # Optional: for demonstrating creation
+        #print(f"Book '{self.title}' created.") # Optional: for demonstrating creation
 
     def __del__(self):
         """
